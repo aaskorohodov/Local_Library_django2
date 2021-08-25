@@ -7,7 +7,7 @@ class Genre(models.Model):
     """
     Model representing a book genre (e.g. Science Fiction, Non Fiction).
     """
-    name = models.CharField(max_length=200, help_text="Enter a book genre (e.g. Science Fiction, French Poetry etc.)")
+    name = models.CharField('Жанр', max_length=200, help_text="Enter a book genre (e.g. Science Fiction, French Poetry etc.)")
 
     def __str__(self):
         """
@@ -70,7 +70,7 @@ class BookInstance(models.Model):
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this particular book across whole library")
     book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True)
-    imprint = models.CharField(max_length=200)
+    imprint = models.CharField('Издательство (imprint)', max_length=200)
     due_back = models.DateField(null=True, blank=True)
 
     LOAN_STATUS = (
