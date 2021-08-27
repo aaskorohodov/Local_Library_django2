@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Book, Author, BookInstance, Genre
+from django.views import generic
 
 
 def index(request):
@@ -26,3 +27,15 @@ def index(request):
                            'num_genres':num_genres
                            },
     )
+
+
+class BookListView(generic.ListView):
+    '''Это обобщенное отображение, оно сделает запрос к базе, получит все записи модели Book и отрисует шаблон.
+    Обобщенное отображение по умолчанию ищет шаблон по имени /application_name/the_model_name_list.html
+    То есть тут оно ожидает найти /locallibrary/catalog/templates/catalog/book_list.html что является ебаниной'''
+    model = Book
+    paginate_by = 10
+
+
+class BookDetailView(generic.DetailView):
+    model = Book
