@@ -24,4 +24,6 @@
     <li><strong>Genres:</strong> {{ num_genres }}</li>
   </ul>
 
+  <p>Вы посетили эту страницу {{ num_visits }}{% if num_visits == 1 %} раз{% else %} раза{% endif %}.</p>
+
 {% endblock %}
